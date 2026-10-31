@@ -7,7 +7,7 @@
 
 > **Security Risks and Mitigations for AI Agent Skills**
 >
-> Covering OpenClaw (SKILL.md YAML), Claude Code (skill.json), Cursor/Codex (manifest.json), and VS Code (package.json) ecosystems.
+> Covering OpenClaw, Claude Code, Cursor, and Codex agent skills (`SKILL.md` with YAML frontmatter), plus VS Code extensions (`package.json`).
 
 ## Quick Links
 
@@ -325,9 +325,11 @@ Most production agent deployments today satisfy all three conditions.
 | Platform | Skill Format | Primary Risk File |
 |----------|-------------|-------------------|
 | OpenClaw | `SKILL.md` (YAML frontmatter + Markdown) | `SKILL.md`, `SOUL.md`, `MEMORY.md` |
-| Claude Code | `skill.json` / `YAML` + `scripts/` | `.claude/settings.json`, hooks config |
-| Cursor / Codex | `manifest.json` + handler scripts | `manifest.json`, tool configs |
-| VS Code | `package.json` + extensions | `package.json`, `extension.ts` |
+| Claude Code | `SKILL.md` (YAML frontmatter + Markdown; optional `scripts/`) | `SKILL.md`, `.claude/settings.json`, hooks config |
+| Cursor / Codex | `SKILL.md` (YAML frontmatter + Markdown; optional scripts) | `SKILL.md`, scripts, tool configs |
+| VS Code | `package.json` (extension manifest, not an agent skill format) | `package.json`, `extension.ts` |
+
+Agent skills and IDE extensions are different package types. See the current [Claude Code skills](https://code.claude.com/docs/en/skills), [Cursor skills](https://cursor.com/docs/skills), and [Codex skills](https://learn.chatgpt.com/docs/build-skills) documentation for their `SKILL.md` formats.
 
 ---
 
@@ -591,8 +593,8 @@ AST10 fills the gap between protocol-layer and model-layer security — a gap th
 
 - Agent skills across all major platforms:
   - **OpenClaw**: `SKILL.md` (YAML frontmatter + Markdown), `SOUL.md`, `MEMORY.md`
-  - **Claude Code**: `skill.json` / YAML + `scripts/`, `.claude/settings.json`, hooks
-  - **Cursor / Codex**: `manifest.json` + handler scripts
+  - **Claude Code**: `SKILL.md` (YAML frontmatter + Markdown; optional `scripts/`), `.claude/settings.json`, hooks
+  - **Cursor / Codex**: `SKILL.md` (YAML frontmatter + Markdown; optional scripts)
   - **VS Code**: `package.json` + extension contributions
 - All 10 risks: AST01 (Malicious Skills) through AST10 (Cross-Platform Reuse)
 - Platform-specific attack scenarios with universal mitigations
